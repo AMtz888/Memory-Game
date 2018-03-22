@@ -20,6 +20,8 @@ let cardList = [
   '<i class="fa fa-bomb"></i>'
 ];
 
+let openCards = [];
+
 
 // Shuffle function from http://stackoverflow.com/a/2450976
 function shuffle(array) {
@@ -65,3 +67,12 @@ function showCard() {
 }
 
 showCard();
+
+
+function addOpenCard () {
+  if ($('.card').hasClass('open show')) {
+    openCards.push($(this));
+  }
+}
+
+addOpenCard();
