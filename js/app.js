@@ -1,7 +1,7 @@
 /*
  * Create a list that holds all of your cards
  */
-var cardList = [
+let cardList = [
   '<i class="fa fa-diamond"></i>',
   '<i class="fa fa-diamond"></i>',
   '<i class="fa fa-paper-plane-o"></i>',
@@ -20,12 +20,6 @@ var cardList = [
   '<i class="fa fa-bomb"></i>'
 ];
 
-/*
- * Display the cards on the page
- *   - shuffle the list of cards using the provided "shuffle" method below
- *   - loop through each card and create its HTML
- *   - add each card's HTML to the page
- */
 
 // Shuffle function from http://stackoverflow.com/a/2450976
 function shuffle(array) {
@@ -42,12 +36,16 @@ function shuffle(array) {
     return array;
 }
 
+// Shuffles the cards and creates each card's HTML
 function createCardGrid() {
+  cardList = shuffle(cardList);
   cardList.forEach(function(card) {
     $('.deck').append('<li class="card">' + card + '</li>');
     });
-  cardList = shuffle(cardList);
+
 }
+
+createCardGrid();
 
 /*
  * set up the event listener for a card. If a card is clicked:
@@ -59,3 +57,11 @@ function createCardGrid() {
  *    + increment the move counter and display it on the page (put this functionality in another function that you call from this one)
  *    + if all cards have matched, display a message with the final score (put this functionality in another function that you call from this one)
  */
+
+function showCard() {
+  $('.card').on('click', function() {
+    $(this).toggleClass('open show');
+  });
+}
+
+showCard();
