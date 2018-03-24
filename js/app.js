@@ -63,16 +63,31 @@ createCardGrid();
 function showCard() {
   $('.card').on('click', function() {
     $(this).toggleClass('open show');
+    openCards.push($(this));
   });
 }
 
-showCard();
 
-
-function addOpenCard () {
-  if ($('.card').hasClass('open show')) {
-    openCards.push($(this));
+function checkMatch() {
+  if (openCards[0].children().attr('class') === openCards[1].children().attr('class')) {
+    openCards.forEach(function(card) {
+      card.toggleClass('match');
+      card.off('click');
+    });
+  } else {
+    openCards.forEach(function(card) {
+      card.toggleClass('open show');
+    });
+    openCards = [];
   }
 }
 
-addOpenCard();
+
+function playGame() {
+  showCard();
+  if (openCards.length === 2) {
+    checkMatch();
+  }
+}
+
+playGame();
