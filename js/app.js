@@ -1,6 +1,3 @@
-/*
- * Create a list that holds all of your cards
- */
 let cardList = [
   '<i class="fa fa-diamond"></i>',
   '<i class="fa fa-diamond"></i>',
@@ -21,6 +18,7 @@ let cardList = [
 ];
 
 let openCards = [];
+let numOfMoves = 0;
 
 
 // Shuffle function from http://stackoverflow.com/a/2450976
@@ -60,34 +58,43 @@ createCardGrid();
  *    + if all cards have matched, display a message with the final score (put this functionality in another function that you call from this one)
  */
 
+
 function showCard() {
   $('.card').on('click', function() {
     $(this).toggleClass('open show');
     openCards.push($(this));
+    if (openCards.length === 2) {
+      checkMatch();
+    }
+    console.log("running showCard");
   });
 }
 
 
 function checkMatch() {
+  console.log("running checkMatch")
+  console.log(openCards[0].children().attr('class'), openCards[1].children().attr('class'))
   if (openCards[0].children().attr('class') === openCards[1].children().attr('class')) {
     openCards.forEach(function(card) {
-      card.toggleClass('match');
+      card.toggleClass('match animated tada');
       card.off('click');
+      console.log("inside first if")
     });
   } else {
     openCards.forEach(function(card) {
-      card.toggleClass('open show');
+      card.toggleClass('animated wobble');
+      setTimeout(function(){card.toggleClass('open show animated wobble');}, 800);
+      console.log("inside else")
     });
-    openCards = [];
   }
+  openCards = [];
 }
 
 
 function playGame() {
   showCard();
-  if (openCards.length === 2) {
-    checkMatch();
-  }
+  console.log("running playGame")
 }
+
 
 playGame();
