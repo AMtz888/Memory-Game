@@ -19,6 +19,7 @@ let cardList = [
 
 let openCards = [];
 let numOfMoves = 0;
+let numMatched = 0;
 
 
 // Shuffle function from http://stackoverflow.com/a/2450976
@@ -59,14 +60,15 @@ createCardGrid();
  */
 
 
-function showCard() {
+function playGame() {
   $('.card').on('click', function() {
     $(this).toggleClass('open show');
     openCards.push($(this));
     if (openCards.length === 2) {
       checkMatch();
     }
-    console.log("running showCard");
+    updateGameInfo();
+    console.log("running playGame");
   });
 }
 
@@ -78,23 +80,29 @@ function checkMatch() {
     openCards.forEach(function(card) {
       card.toggleClass('match animated tada');
       card.off('click');
+      numMatched++
       console.log("inside first if")
     });
   } else {
     openCards.forEach(function(card) {
-      card.toggleClass('animated wobble');
-      setTimeout(function(){card.toggleClass('open show animated wobble');}, 800);
+      card.toggleClass('animated shake');
+      setTimeout(function(){card.toggleClass('open show animated shake');}, 800);
       console.log("inside else")
     });
   }
   openCards = [];
+  numOfMoves++
 }
 
+// Updates the number of moves and reduces star count on the page
+function updateGameInfo() {
+  $('.moves').html(numOfMoves);
 
-function playGame() {
-  showCard();
-  console.log("running playGame")
+  if (numOfMoves > 12 && numOfMoves <= 18) {
+    $('#star3').attr('class', 'fa fa-star-o')
+  } else if (numOfMoves > 18) {
+    $('#star2').attr('class', 'fa fa-star-o')
+  }
 }
-
 
 playGame();
