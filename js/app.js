@@ -20,6 +20,8 @@ let cardList = [
 let openCards = [];
 let numOfMoves = 0;
 let numMatched = 0;
+let firstClick = 0;
+let endGame;
 
 
 // Shuffle function from http://stackoverflow.com/a/2450976
@@ -46,7 +48,7 @@ function createCardGrid() {
 
 }
 
-createCardGrid();
+
 
 /*
  * set up the event listener for a card. If a card is clicked:
@@ -61,12 +63,15 @@ createCardGrid();
 
 
 function playGame() {
+  createCardGrid();
   $('.card').on('click', function() {
+    firstClick++;
     $(this).toggleClass('open show');
     openCards.push($(this));
     if (openCards.length === 2) {
       checkMatch();
     }
+    timer();
     updateGameInfo();
     console.log("running playGame");
   });
@@ -92,6 +97,9 @@ function checkMatch() {
   }
   openCards = [];
   numOfMoves++
+  if (numMatched === 16) {
+    endGame = true;
+  }
 }
 
 // Updates the number of moves and reduces star count on the page
@@ -104,5 +112,30 @@ function updateGameInfo() {
     $('#star2').attr('class', 'fa fa-star-o')
   }
 }
+
+/* Adds a timer to the page
+ * Resources to help me figure out the timer code:
+ * https://stackoverflow.com/questions/24155788/timer-to-be-displayed-on-a-webpage
+ * https://www.w3schools.com/jsref/met_win_setinterval.asp
+ */
+ function timer() {
+   let min = 0;
+   let sec = 0;
+   let time;
+   if (firstClick === 1) {
+     time = setInterval(function() {
+       sec++;
+       if (sec > 59) {
+         sec = 0;
+         min++;
+       }
+     $('.timer').html((min > 9 ? min : '0'+min)+':'+(sec > 9 ? sec : '0'+sec));
+     if (endGame === true) {
+       clearInterval(time);
+     }
+     }, 1000);
+   }
+ }
+
 
 playGame();
