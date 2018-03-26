@@ -26,7 +26,7 @@
 
         	<span class="moves">0</span> Moves
 
-          <span class="timer">Timer</span>  
+          <span class="timer">00:00</span>
 
           <div class="restart">Restart
         		<i class="fa fa-repeat"></i>
@@ -36,6 +36,20 @@
         <ul class="deck">
           <!-- created dynamically. See app.js-->
         </ul>
+    </div>
+
+    <div class="modal">
+      <div class="modal-content">
+        <span class="close-button">&times;</span>
+        <h1>Congratulations, you won!</h1>
+        <p>Your game stats:</p>
+        <p>Total Moves: <span class="moves">0</span></p>
+        <p>Time Completed: <span class="timer">00:00</span></p>
+        <p>Star Rating: <span id="stars">3</span> out of 3 stars</p>
+        <p>Do you want to play again?</p>
+        <button type="button" id="yes">Yes</button>
+        <button type="button" id="no">No</button>
+      </div>
     </div>
 
     <script src="js/app.js"></script>

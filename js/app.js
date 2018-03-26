@@ -21,6 +21,7 @@ let openCards = [];
 let numOfMoves = 0;
 let numMatched = 0;
 let firstClick = 0;
+let stars = 3;
 let endGame;
 
 
@@ -66,14 +67,13 @@ function playGame() {
   createCardGrid();
   $('.card').on('click', function() {
     firstClick++;
+    startTimer();
     $(this).toggleClass('open show');
     openCards.push($(this));
     if (openCards.length === 2) {
       checkMatch();
     }
-    timer();
     updateGameInfo();
-    console.log("running playGame");
   });
 }
 
@@ -99,6 +99,7 @@ function checkMatch() {
   numOfMoves++
   if (numMatched === 16) {
     endGame = true;
+    theEnd();
   }
 }
 
@@ -106,10 +107,14 @@ function checkMatch() {
 function updateGameInfo() {
   $('.moves').html(numOfMoves);
 
-  if (numOfMoves > 12 && numOfMoves <= 18) {
+  if (numOfMoves >= 14 && numOfMoves <= 20) {
     $('#star3').attr('class', 'fa fa-star-o')
-  } else if (numOfMoves > 18) {
+    stars = 2;
+    //return stars;
+  } else if (numOfMoves > 20) {
     $('#star2').attr('class', 'fa fa-star-o')
+    stars = 1;
+    //return stars;
   }
 }
 
@@ -118,7 +123,7 @@ function updateGameInfo() {
  * https://stackoverflow.com/questions/24155788/timer-to-be-displayed-on-a-webpage
  * https://www.w3schools.com/jsref/met_win_setinterval.asp
  */
- function timer() {
+ function startTimer() {
    let min = 0;
    let sec = 0;
    let time;
@@ -137,5 +142,31 @@ function updateGameInfo() {
    }
  }
 
+function restart() {
+  location.reload();
+}
+
+function theEnd() {
+  let modal = document.querySelector('.modal');
+  let closeButton = document.querySelector('.close-button');
+  let yes = document.querySelector('#yes');
+  let no = document.querySelector('#no');
+
+  $("#stars").text(String(stars));
+
+  function toggleModal() {
+        modal.classList.toggle('show-modal');
+    }
+  toggleModal();
+
+  closeButton.addEventListener("click", toggleModal);
+  yes.addEventListener("click", restart);
+  no.addEventListener("click", toggleModal);
+  console.log("running theEnd");
+}
+
+$('.restart').on('click', function() {
+  restart();
+});
 
 playGame();
