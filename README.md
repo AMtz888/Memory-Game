@@ -1,16 +1,10 @@
 # Udacity's Memory Game Project
 
-## Resources Used
-### for CSS animations
-* https://github.com/daneden/animate.css
-
-### for timer
-* https://stackoverflow.com/questions/24155788/timer-to-be-displayed-on-a-webpage
-* https://www.w3schools.com/jsref/met_win_setinterval.asp
-
-### for modal
-* https://sabe.io/tutorials/how-to-create-modal-popup-box
-* https://www.w3schools.com/howto/howto_css_modals.asp
+## External Libraries and Fonts Used
+* [jQuery](http://jquery.com/)
+* [Animate.css](https://github.com/daneden/animate.css)
+* [Font Awesome](https://fontawesome.com/)
+* [Google Web Fonts - Coda](https://fonts.google.com/specimen/Coda)
 
 ## The Game
 This is a classic memory game where you must flip two cards over at a time until
@@ -22,8 +16,17 @@ The game keeps track of how many moves have been made, how much time it takes to
 complete the game, and gives a star rating depending on the how many moves it
 takes to find all the pairs.
 
-3 Stars - 13 moves or less
-2 Stars - 14 to 20 moves
-1 Star - 21 moves or over
+* 3 Stars - 13 moves or less
+* 2 Stars - 14 to 20 moves
+* 1 Star - 21 moves or over
 
 There is also a restart button should you wish to start over.
+
+## Resources Used
+### for timer
+* https://stackoverflow.com/questions/24155788/timer-to-be-displayed-on-a-webpage
+* https://www.w3schools.com/jsref/met_win_setinterval.asp
+
+### for modal
+* https://sabe.io/tutorials/how-to-create-modal-popup-box
+* https://www.w3schools.com/howto/howto_css_modals.asp
