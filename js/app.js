@@ -56,8 +56,10 @@ function playGame() {
   $('.card').on('click', function() {
     firstClick++;
     startTimer();
-    $(this).toggleClass('open show');
-    openCards.push($(this));
+    if (!($(this).hasClass('open show'))) {
+      $(this).toggleClass('open show');
+      openCards.push($(this));
+    }
     if (openCards.length === 2) {
       checkMatch();
     }
