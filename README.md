@@ -1,11 +1,5 @@
 # Udacity's Memory Game Project
 
-## External Libraries and Fonts Used
-* [jQuery](http://jquery.com/)
-* [Animate.css](https://github.com/daneden/animate.css)
-* [Font Awesome](https://fontawesome.com/)
-* [Google Web Fonts - Coda](https://fonts.google.com/specimen/Coda)
-
 ## The Game
 This is a classic memory game where you must flip two cards over at a time until
 you find a match. There are 16 cards that are automatically shuffled and arranged
@@ -21,6 +15,14 @@ takes to find all the pairs.
 * 1 Star - 21 moves or over
 
 There is also a restart button should you wish to start over.
+
+[Play the game here.](https://amtz888.github.io/Memory-Game/)
+
+## External Libraries and Fonts Used
+* [jQuery](http://jquery.com/)
+* [Animate.css](https://github.com/daneden/animate.css)
+* [Font Awesome](https://fontawesome.com/)
+* [Google Web Fonts - Coda](https://fonts.google.com/specimen/Coda)
 
 ## Resources Used
 ### for timer
