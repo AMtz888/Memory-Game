@@ -162,9 +162,11 @@ function theEnd() {
 
 
 // Event listener for restart button
-$('.restart').on('click', function() {
-  restart();
-});
+function restartButton() {
+  $('.restart').on('click', function() {
+    restart();
+  });
+}
 
-
+restartButton();
 playGame();
